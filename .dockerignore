@@ -1,0 +1,5 @@
+*
+!Dockerfile
+!Makefile
+!main.go
+!bin/hchecks-linux_amd64
