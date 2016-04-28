@@ -10,3 +10,9 @@ script:
 notifications:
   slack:
     secure: Yr2KYBdg0c5sCFnc6Ca9BV4uKpATrCpNyKhXdRVR2lZ5QS64TS0aLjvCp1bXLQ2rz96e4chcIRCI/Ov4TDUzr5MjMN4DXCP6vq+SbDdzZ3PideMWHJc1CHo4IeBkA/8J0ZLRS5wig+hicJgry6awJe7WSLlo/kv26Y9+cBmZqJSC623VEIYZcTu4FWyEoYuYoHi4fLjktG99th1u+mi1GKWD2xQqnt5VZ67nyWH7Q2hbY+HSfmOmwmhbolm6OhTS6ujNv93lezIJINrrmZk1+eNgqZPDta2rwIc+RvtWG4pq+ZYg96Yhsq2Avyt2DE2A0twJQg1gHLcPeylCWLmREXUbM9X1yUmwnGkzniXh2LXkJID1K5zGhbiWVwS7l2lb28j4DJyVEbKF+jMzvKtjv1eXf5RqBbdmG7/RpgG3U6G9MGe1mQnGv35lJQhZLY03D3n9gILJ3sYhv7TBZI+ZnE6GnnSQZQy9p79wXCS+SL0jcX5C/81EGU/P8GCfX0iE/qhK+qX9TpxdNHpULn02deR3xBzHFEwjvSNN2rwd4fJtQ4kdVBEVFWAF5H3onb3IVzYHkrNWNavT/1oJMp6JiSWCR9yl3mv8N674R4PTBMLGRLNFzPcaB0AJtIvZqEEOvZygRjGHuu0f9E2NXicPA3l4Sqk3mSSSvPY+b3BbvR8=
+deploy:
+  provider: script
+  script: make ci-docker-release
+  on:
+    branch: master
+    go: '1.6'
