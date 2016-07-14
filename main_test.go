@@ -17,13 +17,13 @@ func TestMain(t *testing.T) {
 		t.Fatalf("Failed to process GET request: %v", err)
 	}
 
+	defer r.Body.Close()
+
 	data, err := ioutil.ReadAll(r.Body)
 
 	if err != nil {
 		t.Fatalf("Failed to read response body: %v", err)
 	}
-
-	defer r.Body.Close()
 
 	expected := "I am healthy.\n"
 
