@@ -23,6 +23,8 @@ func TestMain(t *testing.T) {
 		t.Fatalf("Failed to read response body: %v", err)
 	}
 
+	defer r.Body.Close()
+
 	expected := "I am healthy.\n"
 
 	if expected != string(data) {
