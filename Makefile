@@ -11,19 +11,15 @@ build: clean
 build-linux: clean
 	GOOS=linux GOARCH=amd64 go build -o bin/$(BINARY_LINUX_AMD64)
 
-ci-docker-push: docker-release-build
+ci-docker-push: docker-build
 	@docker login -e="$(DOCKER_QUAY_EMAIL)" -u="$(DOCKER_QUAY_USERNAME)" -p="$(DOCKER_QUAY_PASSWORD)" quay.io
 	docker push $(DOCKER_IMAGE)
 
 clean:
-	rm -f bin/$(BINARY)
-	rm -f bin/$(BINARY_LINUX_AMD64)
+	rm -fr bin
 
-docker-build: clean
+docker-build: build-linux
 	docker build -t $(DOCKER_IMAGE) .
-
-docker-release-build: build-linux
-	docker build -f Dockerfile.release -t $(DOCKER_IMAGE) .
 
 docker-push:
 	docker push $(DOCKER_IMAGE)
@@ -31,4 +27,4 @@ docker-push:
 test:
 	go test
 
-PHONY: build build-linux ci-docker-push clean docker-build docker-release-build test
+PHONY: build build-linux ci-docker-push clean docker-build test
